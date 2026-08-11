@@ -1,0 +1,26 @@
+{
+  "name": "aura-spatial-restaurant",
+  "version": "1.0.0",
+  "description": "Full-stack Spatial UI Restaurant Booking & Ordering Application with Express, Node.js, and MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "spatial-ui",
+    "express",
+    "mongodb",
+    "restaurant-booking",
+    "cart",
+    "payment-gateway"
+  ],
+  "author": "Antigravity",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1"
+  }
+}

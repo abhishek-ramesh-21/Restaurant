@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flavour House | Artisanal Dining & Culinary Studio</title>
+  <meta name="description" content="Welcome to Flavour House. Experience artisanal gastronomy, house-crafted soft drinks, private champagne suites, and seamless dining reservations.">
+  
+  <!-- Premium Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core Styling System -->
+  <link rel="stylesheet" href="css/spatial.css">
+</head>
+<body class="spatial-bg">
+
+  <!-- Navbar -->
+  <header class="spatial-navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-orb"><i class="fa-solid fa-crown"></i></div>
+        <div class="logo-text">
+          <span class="brand-name">FLAVOUR HOUSE</span>
+          <span class="brand-tag">CULINARY STUDIO & DINING</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#menu-section" class="nav-link active"><i class="fa-solid fa-utensils"></i> Culinary Menu</a>
+        <a href="#seating-section" class="nav-link"><i class="fa-solid fa-gem"></i> Dining Suites</a>
+        <a href="#reservation-section" class="nav-link"><i class="fa-solid fa-calendar-check"></i> Reservations</a>
+        <a href="#about-section" class="nav-link"><i class="fa-solid fa-sparkles"></i> Experience</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Audio Haptic Toggle -->
+        <button id="audio-toggle-btn" class="spatial-btn-icon" title="Toggle Acoustic Haptics">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+
+        <!-- Live Suite Status -->
+        <div class="spatial-pill-stat">
+          <span class="status-pulse"></span>
+          <span id="live-table-count">6 Suites Available</span>
+        </div>
+
+        <!-- Cart Button -->
+        <button id="open-cart-btn" class="spatial-btn-primary">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span>Cart</span>
+          <span id="cart-badge" class="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="spatial-main">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="spatial-tag-chip">
+          <i class="fa-solid fa-award"></i> MICHELIN DISTINCTION & ARTISANAL CELLAR
+        </div>
+        <h1 class="hero-title">
+          Where Gastronomy Meets <br>
+          <span class="gradient-text">Artisanal Mastery</span>
+        </h1>
+        <p class="hero-subtitle">
+          Indulge in wood-fired dry-aged meats, fresh ocean catch, house-crafted botanical soft drinks, and hand-selected zero-proof elixirs. Reserve your private dining room with interactive seat selection.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#menu-section" class="spatial-btn-glow">
+            <i class="fa-solid fa-compass"></i> Explore Culinary Menu
+          </a>
+          <a href="#seating-section" class="spatial-btn-glass">
+            <i class="fa-solid fa-gem"></i> Reserve Private Suite
+          </a>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <span class="stat-num">45-Day</span>
+            <span class="stat-lbl">In-House Dry Aging</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">100%</span>
+            <span class="stat-lbl">Organic & Farm-Sourced</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">Instant</span>
+            <span class="stat-lbl">Table Reservation & Cart</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DINING SUITES & FLOORPLAN SECTION -->
+    <section id="seating-section" class="section-padding">
+      <div class="section-header">
+        <div class="section-chip"><i class="fa-solid fa-layer-group"></i> FLOORPLAN & SEATING</div>
+        <h2 class="section-title">Select Your Dining Environment</h2>
+        <p class="section-subtitle">Choose from our private champagne suites, courtyard garden tables, or chef's tasting counter.</p>
+      </div>
+
+      <div class="spatial-map-container">
+        <!-- Zone Controls -->
+        <div class="map-controls">
+          <button class="map-filter-btn active" data-zone="all">All Environments</button>
+          <button class="map-filter-btn" data-zone="Private Dining Suite">Champagne Suites</button>
+          <button class="map-filter-btn" data-zone="Outdoor Courtyard">Garden Terrace</button>
+          <button class="map-filter-btn" data-zone="Chef's Kitchen Bar">Chef's Counter</button>
+          <button class="map-filter-btn" data-zone="Main Dining Room">Main Salon</button>
+        </div>
+
+        <!-- Seating Grid -->
+        <div id="spatial-seating-grid" class="spatial-seating-grid">
+          <!-- Dynamically populated via spatial-map.js -->
+        </div>
+
+        <div class="map-legend">
+          <span class="legend-item"><span class="legend-dot available"></span> Available</span>
+          <span class="legend-item"><span class="legend-dot selected"></span> Selected</span>
+          <span class="legend-item"><span class="legend-dot reserved"></span> Reserved</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CULINARY MENU SECTION -->
+    <section id="menu-section" class="section-padding">
+      <div class="section-header">
+        <div class="section-chip"><i class="fa-solid fa-utensils"></i> THE CULINARY COLLECTION</div>
+        <h2 class="section-title">Starters, Master Mains, Desserts & Soft Drinks</h2>
+        <p class="section-subtitle">Browse through all available menus, customize dietary preferences, and add to your cart.</p>
+      </div>
+
+      <!-- Menu Controls -->
+      <div class="menu-controls-wrapper">
+        <!-- Category Tabs -->
+        <div class="category-tabs" id="category-tabs">
+          <button class="tab-btn active" data-category="all">
+            <i class="fa-solid fa-border-all"></i> Complete Menu
+          </button>
+          <button class="tab-btn" data-category="starters">
+            <i class="fa-solid fa-plate-wheat"></i> Starters
+          </button>
+          <button class="tab-btn" data-category="main-course">
+            <i class="fa-solid fa-drumstick-bite"></i> Master Mains
+          </button>
+          <button class="tab-btn" data-category="desserts">
+            <i class="fa-solid fa-ice-cream"></i> Pastry Studio
+          </button>
+          <button class="tab-btn" data-category="soft-drinks">
+            <i class="fa-solid fa-bottle-water"></i> Soft Drinks & Tonics
+          </button>
+          <button class="tab-btn" data-category="cocktails-mocktails">
+            <i class="fa-solid fa-glass-martini-alt"></i> Cocktails & Elixirs
+          </button>
+        </div>
+
+        <!-- Search & Diet Filters Bar -->
+        <div class="search-filter-bar">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="menu-search-input" placeholder="Search menu by dish name, ingredient, or tag...">
+          </div>
+
+          <div class="diet-pills">
+            <button class="diet-pill active" data-diet="all">All Diets</button>
+            <button class="diet-pill" data-diet="Vegan"><i class="fa-solid fa-leaf"></i> Vegan</button>
+            <button class="diet-pill" data-diet="Gluten-Free"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> Gluten-Free</button>
+            <button class="diet-pill" data-diet="Halal"><i class="fa-solid fa-certificate"></i> Halal</button>
+            <button class="diet-pill" data-diet="Chef Special"><i class="fa-solid fa-star"></i> Chef Special</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Grid -->
+      <div id="menu-grid" class="menu-grid">
+        <div class="spatial-loader">
+          <div class="spinner"></div>
+          <p>Preparing Flavour House Culinary Menu...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVATIONS SECTION -->
+    <section id="reservation-section" class="section-padding">
+      <div class="reservation-card glass-panel">
+        <div class="reservation-grid">
+          <div class="reservation-info">
+            <div class="section-chip"><i class="fa-solid fa-calendar-plus"></i> BOOK A TABLE</div>
+            <h2 class="reservation-title">Reserve Your Dining Room</h2>
+            <p class="reservation-desc">
+              Enjoy tailored sommelier pairings, customized table settings, and priority culinary preparation for your party.
+            </p>
+
+            <div class="selected-table-preview-card" id="selected-table-badge-card">
+              <i class="fa-solid fa-chair"></i>
+              <div>
+                <span class="preview-label">Selected Suite / Table</span>
+                <h4 id="preview-table-name" class="preview-val">PRIV-01 (Private Champagne Suite A)</h4>
+              </div>
+            </div>
+
+            <div class="res-feature-list">
+              <div class="res-feat-item"><i class="fa-solid fa-circle-check"></i> Complimentary Table Customization</div>
+              <div class="res-feat-item"><i class="fa-solid fa-circle-check"></i> Dietary Pre-notification Service</div>
+              <div class="res-feat-item"><i class="fa-solid fa-circle-check"></i> Flexible Cancellation Policy</div>
+            </div>
+          </div>
+
+          <form id="reservation-form" class="reservation-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="res-name">Guest Name *</label>
+                <input type="text" id="res-name" required placeholder="e.g. Reshma Sharma">
+              </div>
+              <div class="form-group">
+                <label for="res-email">Email Address *</label>
+                <input type="email" id="res-email" required placeholder="name@example.com">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="res-phone">Phone Number *</label>
+                <input type="tel" id="res-phone" required placeholder="+1 (555) 019-2834">
+              </div>
+              <div class="form-group">
+                <label for="res-guests">Number of Guests *</label>
+                <select id="res-guests" required>
+                  <option value="1">1 Guest</option>
+                  <option value="2" selected>2 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="6">6 Guests</option>
+                  <option value="8">8 Guests (Private Party)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="res-date">Date *</label>
+                <input type="date" id="res-date" required>
+              </div>
+              <div class="form-group">
+                <label for="res-time">Dining Session *</label>
+                <select id="res-time" required>
+                  <option value="12:30 PM">12:30 PM (Midday Culinary Service)</option>
+                  <option value="02:00 PM">02:00 PM (Afternoon Dining)</option>
+                  <option value="06:30 PM">06:30 PM (Sunset Tasting)</option>
+                  <option value="08:30 PM" selected>08:30 PM (Prime Dinner Hour)</option>
+                  <option value="10:00 PM">10:00 PM (Late Night Lounge)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="res-table-select">Chosen Table / Suite *</label>
+              <select id="res-table-select" required>
+                <option value="PRIV-01">PRIV-01 (Private Champagne Suite A - Private Dining)</option>
+                <option value="CHEF-01">CHEF-01 (Chef's Tasting Counter 01)</option>
+                <option value="TER-01">TER-01 (Garden Terrace Table 1 - Outdoor)</option>
+                <option value="TER-02">TER-02 (Garden Terrace Table 2 - Outdoor)</option>
+                <option value="SALON-01">SALON-01 (Main Dining Salon 1)</option>
+                <option value="SALON-03">SALON-03 (Grand Family Salon Booth)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="res-notes">Special Requests / Occasion Notes</label>
+              <textarea id="res-notes" rows="2" placeholder="Birthday, anniversary, severe allergies, high chair..."></textarea>
+            </div>
+
+            <button type="submit" class="spatial-btn-glow btn-block">
+              <i class="fa-solid fa-crown"></i> Confirm Table Reservation
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="about-section" class="section-padding">
+      <div class="ambience-banner glass-panel">
+        <div class="ambience-grid">
+          <div class="ambience-card">
+            <i class="fa-solid fa-fire-burner ambience-icon"></i>
+            <h3>Wood-Fired Mastery</h3>
+            <p>Every dry-aged steak and seafood main course is seared over red oak wood coals for peak natural flavor release.</p>
+          </div>
+          <div class="ambience-card">
+            <i class="fa-solid fa-leaf ambience-icon"></i>
+            <h3>Artisanal Soft Drinks</h3>
+            <p>House-pressed botanicals, cold-steeped ginger hydrosols, and fresh organic fruits crafted daily by our mixologists.</p>
+          </div>
+          <div class="ambience-card">
+            <i class="fa-solid fa-shield-halved ambience-icon"></i>
+            <h3>Instant Payment Gateway</h3>
+            <p>Encrypted checkout supporting card authorization, Apple Pay, and instant downloadable receipt invoices.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CART DRAWER MODAL -->
+  <div id="cart-drawer-overlay" class="drawer-overlay">
+    <div class="cart-drawer glass-panel">
+      <div class="drawer-header">
+        <h3><i class="fa-solid fa-bag-shopping"></i> Your Flavour Cart</h3>
+        <button id="close-cart-btn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div id="cart-items-container" class="cart-items-container">
+        <!-- Dynamically rendered via app.js -->
+      </div>
+
+      <div class="cart-summary-footer">
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div class="summary-line">
+          <span>Sales Tax (8%)</span>
+          <span id="cart-tax">$0.00</span>
+        </div>
+        <div class="summary-line">
+          <span>House Service Fee</span>
+          <span id="cart-fee">$2.50</span>
+        </div>
+        <div class="summary-line total-line">
+          <span>Total Amount</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+
+        <div class="cart-action-buttons">
+          <button id="proceed-checkout-btn" class="spatial-btn-glow btn-block" disabled>
+            <i class="fa-solid fa-credit-card"></i> Proceed to Payment Gateway
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYMENT GATEWAY MODAL -->
+  <dialog id="payment-modal" class="spatial-dialog glass-panel">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <span class="dialog-chip"><i class="fa-solid fa-lock"></i> SECURE ENCRYPTED CHECKOUT</span>
+          <h2 style="font-family: var(--font-heading); font-size:2rem;">Flavour House Payment Gateway</h2>
+        </div>
+        <button id="close-payment-btn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="payment-body-grid">
+        
+        <!-- Left: 3D Credit Card Preview -->
+        <div class="card-preview-column">
+          <div class="card-3d-wrapper" id="card-3d-wrapper">
+            <div class="card-3d-inner" id="card-3d-inner">
+              <!-- Front -->
+              <div class="card-face card-front">
+                <div class="card-top">
+                  <div class="card-chip"></div>
+                  <i class="fa-brands fa-cc-visa card-logo"></i>
+                </div>
+                <div class="card-number-display" id="card-num-display">•••• •••• •••• ••••</div>
+                <div class="card-bottom">
+                  <div>
+                    <div class="card-label">CARDHOLDER NAME</div>
+                    <div class="card-val" id="card-name-display">RESHMA SHARMA</div>
+                  </div>
+                  <div>
+                    <div class="card-label">EXPIRES</div>
+                    <div class="card-val" id="card-exp-display">12/28</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Back -->
+              <div class="card-face card-back">
+                <div class="card-stripe"></div>
+                <div class="card-cvv-box">
+                  <div class="cvv-label">CVV / CVC</div>
+                  <div class="cvv-val" id="card-cvv-display">•••</div>
+                </div>
+                <div class="card-back-text">FLAVOUR HOUSE FINANCIAL TOKEN AUTHORIZATION</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="payment-amount-box">
+            <span>Total Payable Amount</span>
+            <h3 id="payment-payable-amount">$0.00</h3>
+          </div>
+        </div>
+
+        <!-- Right: Payment Methods & Inputs -->
+        <div class="payment-form-column">
+          <div class="payment-methods-selector">
+            <button class="pay-method-btn active" data-method="card">
+              <i class="fa-solid fa-credit-card"></i> Card
+            </button>
+            <button class="pay-method-btn" data-method="apple-pay">
+              <i class="fa-brands fa-apple"></i> Apple Pay
+            </button>
+            <button class="pay-method-btn" data-method="crypto">
+              <i class="fa-brands fa-ethereum"></i> Web3 Pay
+            </button>
+            <button class="pay-method-btn" data-method="cash">
+              <i class="fa-solid fa-money-bill-wave"></i> Cash
+            </button>
+          </div>
+
+          <form id="payment-gateway-form" class="payment-form">
+            <div class="form-group">
+              <label for="pay-card-num">Card Number *</label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-credit-card"></i>
+                <input type="text" id="pay-card-num" placeholder="4532 8901 2345 6789" maxlength="19" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="pay-card-name">Cardholder Full Name *</label>
+              <input type="text" id="pay-card-name" placeholder="RESHMA SHARMA" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="pay-card-exp">Expiry (MM/YY) *</label>
+                <input type="text" id="pay-card-exp" placeholder="12/28" maxlength="5" required>
+              </div>
+              <div class="form-group">
+                <label for="pay-card-cvv">CVV *</label>
+                <input type="password" id="pay-card-cvv" placeholder="890" maxlength="4" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="pay-email">Receipt Delivery Email *</label>
+              <input type="email" id="pay-email" placeholder="reshma@example.com" required>
+            </div>
+
+            <button type="submit" id="submit-payment-btn" class="spatial-btn-glow btn-block">
+              <i class="fa-solid fa-shield-check"></i> Authorize & Complete Order
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </dialog>
+
+  <!-- RECEIPT MODAL -->
+  <dialog id="receipt-modal" class="spatial-dialog glass-panel">
+    <div class="modal-content receipt-content">
+      <div class="receipt-header">
+        <div class="success-checkmark-icon"><i class="fa-solid fa-check"></i></div>
+        <h2 style="font-family: var(--font-heading); font-size:2.2rem;">Payment Authorized!</h2>
+        <p>Your order and table reservation have been processed at Flavour House.</p>
+      </div>
+
+      <div id="receipt-details-body" class="receipt-body">
+        <!-- Dynamically rendered receipt -->
+      </div>
+
+      <div class="receipt-footer">
+        <button id="print-receipt-btn" class="spatial-btn-glass"><i class="fa-solid fa-print"></i> Print Invoice</button>
+        <button id="close-receipt-btn" class="spatial-btn-glow"><i class="fa-solid fa-crown"></i> Return to Studio</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ITEM DETAIL MODAL -->
+  <dialog id="item-detail-modal" class="spatial-dialog glass-panel">
+    <div class="modal-content item-modal-content">
+      <button id="close-item-modal-btn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="item-modal-grid">
+        <div class="item-modal-img-wrapper">
+          <img id="modal-item-img" src="" alt="Menu item image">
+          <span id="modal-item-spatial-tag" class="item-spatial-tag"></span>
+        </div>
+
+        <div class="item-modal-details">
+          <h2 id="modal-item-title" style="font-family: var(--font-heading); font-size:2rem;">Item Title</h2>
+          <div class="modal-item-meta">
+            <span id="modal-item-price" class="item-price">$0.00</span>
+            <span id="modal-item-rating" class="item-rating">★ 4.9</span>
+            <span id="modal-item-calories" class="item-calories">340 cal</span>
+          </div>
+
+          <p id="modal-item-desc" class="item-desc">Detailed culinary description...</p>
+
+          <div id="modal-diet-container" class="item-diet-tags">
+            <!-- Diet chips -->
+          </div>
+
+          <div class="customizer-box">
+            <label>Quantity:</label>
+            <div class="quantity-counter">
+              <button id="modal-qty-minus" class="qty-btn"><i class="fa-solid fa-minus"></i></button>
+              <span id="modal-qty-val" class="qty-val">1</span>
+              <button id="modal-qty-plus" class="qty-btn"><i class="fa-solid fa-plus"></i></button>
+            </div>
+
+            <label for="modal-notes" class="notes-label">Chef Preparation Note:</label>
+            <input type="text" id="modal-notes" placeholder="e.g. Medium rare, extra sauce on side, low sugar...">
+          </div>
+
+          <button id="add-modal-item-to-cart-btn" class="spatial-btn-glow btn-block">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="spatial-footer">
+    <div class="footer-container">
+      <div style="font-family: var(--font-heading); font-size:1.6rem; color:white; margin-bottom:8px;">
+        FLAVOUR HOUSE <span style="color:var(--gold-primary); font-size:1rem;">• CULINARY STUDIO</span>
+      </div>
+      <p>&copy; 2026 Flavour House Dining Room & Bar. Powered by Express, Node.js & MongoDB.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/spatial-map.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
